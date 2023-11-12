@@ -15,12 +15,12 @@ class UserSeeder extends Seeder
     public function run(): void
     {
        $data = [
-        // [
-        //     "name" => 'Admin Artist', 
-        //     "username" => "artistAdmin",
-        //     "email" => "admin@mail.com", 
-        //     "password" =>  Hash::make("12345")
-        // ],
+        [
+            "name" => 'Admin Artist', 
+            "username" => "artistAdmin",
+            "email" => "admin@mail.com", 
+            "password" =>  Hash::make("12345")
+        ],
         [
             "name" => 'User One', 
             "username" => "userOne",
