@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\artist\ArtistController;
 use App\Http\Controllers\Api\artwork\ArtworkController;
+use App\Http\Controllers\Api\auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::post('/login', [AuthController::class, 'loginUser']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/artist', [ArtistController::class, 'artistInfo']);
+});
 
 Route::get('/all-artworks', [ArtworkController::class, 'allArtwork'])->name('allArtwork');
-

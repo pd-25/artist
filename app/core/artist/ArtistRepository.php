@@ -33,7 +33,7 @@ class ArtistRepository implements ArtistInterface
 
     public function getSingleArtist($id)
     {
-        $find =  User::where('id', $id)->first();
+        $find =  User::with('artworks')->where('id', $id)->first();
         if ($find) {
             return $find;
         } else {
