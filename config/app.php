@@ -174,6 +174,8 @@ return [
         App\ServiceProvider\PlacementServiceProvider::class,
         App\ServiceProvider\SubjectServiceProvider::class,
         App\ServiceProvider\StyleServiceProvider::class,
+        App\ServiceProvider\BannerImageServiceProvider::class,
+        
     ])->toArray(),
 
     /*

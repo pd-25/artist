@@ -66,6 +66,18 @@
                         </ul>
                     </li>
 
+                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Banner Management <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{{ route('banners.create') }}">Add Banner</a></li>
+
+                            <li><a href="{{ route('banners.index') }}">All Banners</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
                     {{-- <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Order Management <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>

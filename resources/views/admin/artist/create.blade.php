@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', env('APP_NAME') . ' | Category-create')
+@section('title', env('APP_NAME') . ' | Artist-create')
 @section('content')
     <div class="row justify-content-center">
         <div class="col-lg-11">
@@ -124,7 +124,102 @@
                                 </div>
                             </div>
 
+                            <div class="row">
+                                
+                                    <div class="col-md-2">
+                                        <label>Sunday Time</label>
+                                    </div>
 
+                                    <div class="col-md-2">
+                                        <input type="time" name="sunday_from" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="sunday_to" class="form-control">
+                                        
+                                    </div>
+
+
+
+                                    <div class="col-md-2">
+                                        <label>Monday Time</label>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="monday_from" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="monday_to" class="form-control">
+                                        
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label>Tuesday Time</label>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="tuesday_from" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="tuesday_to" class="form-control">
+                                        
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label>Wednesday Time</label>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="wednesday_from" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="wednesday_to" class="form-control">
+                                        
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label>Thrusday Time</label>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="thrusday_from" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="thrusday_to" class="form-control">
+                                        
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label>Friday Time</label>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="friday_from" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="friday_to" class="form-control">
+                                        
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label>Saterday Time</label>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="saterday_from" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="time" name="saterday_to" class="form-control">
+                                        
+                                    </div>
+                                
+                            </div>
 
 
 

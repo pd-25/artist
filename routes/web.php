@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Artist\ArtistController;
 use App\Http\Controllers\Admin\Artworks\ArtworkController;
+use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::resource('artists', ArtistController::class);
 Route::resource('artworks', ArtworkController::class);
+Route::resource('banners', BannerController::class);
 
 });

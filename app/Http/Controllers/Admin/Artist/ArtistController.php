@@ -45,9 +45,9 @@ class ArtistController extends Controller
             'phone' => 'numeric',
             'address' => 'nullable|string|max:500',
         ]);
-
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
-        $store = $this->artistInterface->storeArtistData($data);
+        $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
+        $store = $this->artistInterface->storeArtistData($data, $timeData);
         if ($store) {
             return redirect()->route('artists.index')->with('msg', 'New artist added successfully.');
         } else {
@@ -73,6 +73,7 @@ class ArtistController extends Controller
     public function edit(string $id)
     {
         $data['artist'] = $this->artistInterface->getSingleArtist(decrypt($id));
+        // dd($data);
         if ($data['artist'] == 'Not Found') {
             return back()->with('msg', 'No artist found!');
         }
@@ -92,7 +93,9 @@ class ArtistController extends Controller
         ]);
 
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
-        $update = $this->artistInterface->updateArtist($data, decrypt($id));
+        $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
+
+        $update = $this->artistInterface->updateArtist($data, decrypt($id), $timeData);
         if ($update) {
             return back()->with('msg', 'Artist information updated successfully.');
         } elseif ($update == 'No data') {

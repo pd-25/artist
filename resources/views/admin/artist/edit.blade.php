@@ -160,7 +160,102 @@
 
 
 
+                            <div class="row">
+                                
+                                <div class="col-md-2">
+                                    <label>Sunday Time</label>
+                                </div>
 
+                                <div class="col-md-2">
+                                    <input type="time" name="sunday_from" value="{{ date('H:i', strtotime(@$artist->timeData->sunday_from)) }}" class="form-control">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="sunday_to" value="{{ date('H:i', strtotime(@$artist->timeData->sunday_to)) }}" class="form-control">
+                                    
+                                </div>
+
+
+
+                                <div class="col-md-2">
+                                    <label>Monday Time</label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="monday_from" value="{{ date('H:i', strtotime(@$artist->timeData->monday_from ))}}" class="form-control">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="monday_to" value="{{ date('H:i', strtotime(@$artist->timeData->monday_to)) }}" class="form-control">
+                                    
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Tuesday Time</label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="tuesday_from" value="{{ date('H:i', strtotime(@$artist->timeData->tuesday_from)) }}" class="form-control">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="tuesday_to" value="{{ date('H:i', strtotime(@$artist->timeData->tuesday_to)) }}" class="form-control">
+                                    
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Wednesday Time</label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="wednesday_from" value="{{ date('H:i', strtotime(@$artist->timeData->wednesday_from)) }}" class="form-control">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="wednesday_to" value="{{ date('H:i', strtotime(@$artist->timeData->wednesday_to)) }}" class="form-control">
+                                    
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Thrusday Time</label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="thrusday_from" value="{{ date('H:i', strtotime(@$artist->timeData->thrusday_from)) }}" class="form-control">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="thrusday_to" value="{{ date('H:i', strtotime(@$artist->timeData->thrusday_to)) }}" class="form-control">
+                                    
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Friday Time</label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="friday_from" value="{{ date('H:i', strtotime(@$artist->timeData->friday_from)) }}" class="form-control">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="friday_to" value="{{ date('H:i', strtotime(@$artist->timeData->friday_to)) }}" class="form-control">
+                                    
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Saterday Time</label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="saterday_from" value="{{ date('H:i', strtotime(@$artist->timeData->saterday_from)) }}" class="form-control">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="time" name="saterday_to" value="{{ date('H:i', strtotime(@$artist->timeData->saterday_to)) }}" class="form-control">
+                                    
+                                </div>
+                            
+                        </div>
 
 
 

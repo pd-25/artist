@@ -48,4 +48,12 @@ class User extends Authenticatable
     public function artworks() {
         return  $this->hasMany(Artwork::class, 'user_id', 'id'); 
     }
+
+    public function timeData() {
+        return  $this->hasOne(TimeTable::class, 'user_id', 'id'); 
+    }
+
+    public function bannerImages() {
+        return  $this->hasMany(BannerImage::class, 'user_id', 'id'); 
+    }
 }

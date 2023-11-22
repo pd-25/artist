@@ -2,6 +2,7 @@
 
 namespace App\core\artist;
 
+use App\Models\TimeTable;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ class ArtistRepository implements ArtistInterface
         return User::whereNotIn('id', [1])->orderBy('id', 'DESC')->get();
     }
 
-    public function storeArtistData(array $data)
+    public function storeArtistData(array $data, $timeData)
     {
         if (isset($data['profile_image']) && $data['profile_image'] != null) {
             $content_db = time() . rand(0000, 9999) . "." . $data['profile_image']->getClientOriginalExtension();
@@ -28,12 +29,14 @@ class ArtistRepository implements ArtistInterface
         }
         $data['password'] = Hash::make($data['password']);
 
-        return User::create($data);
+        $user = User::create($data);
+        $timeData['user_id'] = $user->id;
+        return TimeTable::create($timeData);
     }
 
     public function getSingleArtist($id)
     {
-        $find =  User::with('artworks')->where('id', $id)->first();
+        $find =  User::with('artworks', 'timeData', 'bannerImages')->where('id', $id)->first();
         if ($find) {
             return $find;
         } else {
@@ -41,10 +44,20 @@ class ArtistRepository implements ArtistInterface
         }
     }
 
-    public function updateArtist($data, $id)
+    public function updateArtist($data, $id, $timeData)
     {
         $find =  User::where('id', $id)->first();
         if ($find) {
+          
+                 $check_if_time =  TimeTable::where('user_id', $id)->first();
+                 if($check_if_time) {
+                    
+                    $check_if_time->update($timeData);
+                 }else{
+                    $timeData['user_id']= $id;
+                    TimeTable::create($timeData);
+
+                 }
             if (isset($data['profile_image']) && $data['profile_image'] != null) {
                 File::delete(public_path("storage/ProfileImage/" . $find->profile_image));
                 $content_db = time() . rand(0000, 9999) . "." . $data['profile_image']->getClientOriginalExtension();
