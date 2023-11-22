@@ -26,6 +26,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/artist', [ArtistController::class, 'artistInfo']);
     Route::post('/artist-update/{id}', [ArtistController::class, 'artistUpdate']);
+    Route::post('/upload-artwork', [ArtworkController::class, 'artworkUpload']);
 });
 
 Route::get('/all-artworks', [ArtworkController::class, 'allArtwork'])->name('allArtwork');
