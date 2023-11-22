@@ -22,15 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/csrf-token', function () {
-    return response()->json([
-        'csrf_token' => csrf_token(),
-    ]);
-});
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/artist', [ArtistController::class, 'artistInfo']);
     Route::post('/artist-update/{id}', [ArtistController::class, 'artistUpdate']);
     Route::post('/upload-artwork', [ArtworkController::class, 'artworkUpload']);
+    Route::get('/csrf-token', function () {
+        return response()->json([
+            'csrf_token' => csrf_token(),
+        ]);
+    });
 });
 
 Route::get('/all-artworks', [ArtworkController::class, 'allArtwork'])->name('allArtwork');
