@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/artist', [ArtistController::class, 'artistInfo']);
     Route::post('/artist-update/{id}', [ArtistController::class, 'artistUpdate']);
     Route::post('/upload-artwork', [ArtworkController::class, 'artworkUpload']);
+    Route::post('/upload-banner', [ArtworkController::class, 'artworkBanner']);
     // Route::get('/csrf-token', function () {
     //     return response()->json([
     //         'csrf_token' => csrf_token(),
