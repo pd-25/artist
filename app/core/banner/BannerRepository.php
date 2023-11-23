@@ -9,7 +9,6 @@ class BannerRepository implements BannerInterface {
     }
 
     public function storeBannerImage($data) {
-        dd($data);
         if (isset($data['banner_image']) && $data['banner_image'] != null) {
             $content_db = time().rand(0000, 9999) . "." . $data['banner_image']->getClientOriginalExtension();
             $data['banner_image']->storeAs("public/BannerImage", $content_db);
