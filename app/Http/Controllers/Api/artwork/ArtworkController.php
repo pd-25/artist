@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 
 class ArtworkController extends Controller
 {
-    private $artworkInterface, $bannerInterface;
+    public $artworkInterface, $bannerInterface;
 
     public function __construct(ArtworkInterface $artworkInterface, BannerInterface $bannerInterface)
     {
         $this->artworkInterface = $artworkInterface;
+        $this->bannerInterface = $bannerInterface;
     }
 
 
