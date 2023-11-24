@@ -3,15 +3,21 @@
 namespace App\Http\Controllers\Api\artist;
 
 use App\core\artist\ArtistInterface;
+use App\core\placement\PlacementInterface;
+use App\core\style\StyleInterface;
+use App\core\subject\SubjectInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ArtistController extends Controller
 {
-    private $artist;
-    public function __construct(ArtistInterface $artistInterface)
+    private $artist, $styleInterface, $subjectInterface, $placementInterface;
+    public function __construct(ArtistInterface $artistInterface, StyleInterface $styleInterface, SubjectInterface $subjectInterface, PlacementInterface $placementInterface)
     {
         $this->artist = $artistInterface;
+        $this->styleInterface = $styleInterface;
+        $this->subjectInterface = $subjectInterface;
+        $this->placementInterface = $placementInterface;
     }
     public function artistInfo()
     {
@@ -52,5 +58,32 @@ class ArtistController extends Controller
                 'status' => false,
             ]);
         }
+    }
+
+    public function styles() {
+        $data = $this->styleInterface->getAllStyle();
+        return response()->json([
+            'status' => true,
+            'data' => $data
+        ]);
+
+    }
+
+    public function placements() {
+        $data = $this->placementInterface->getAllPlacements();
+        return response()->json([
+            'status' => true,
+            'data' => $data
+        ]);
+
+    }
+
+    public function subjects() {
+        $data = $this->subjectInterface->getAllSubjects();
+        return response()->json([
+            'status' => true,
+            'data' => $data
+        ]);
+
     }
 }
