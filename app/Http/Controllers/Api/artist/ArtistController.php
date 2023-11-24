@@ -39,8 +39,8 @@ class ArtistController extends Controller
     public function artistUpdate(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string',
-            'zipcode' => 'required|numeric|min:6',
+            'name' => 'string',
+            'zipcode' => 'numeric|min:6',
             'phone' => 'numeric',
             'address' => 'nullable|string|max:500',
         ]);
