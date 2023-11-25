@@ -5,6 +5,6 @@ use App\Models\Subject;
 
 class SubjectRepository implements SubjectInterface {
     public function getAllSubjects(){
-        return Subject::orderBy('id', 'DESC')->get();
+        return Subject::orderBy('id', 'asc')->get();
     }
 }

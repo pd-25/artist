@@ -30,11 +30,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/upload-banner', [ArtworkController::class, 'artworkBanner']);
 
 
-    // Route::get('/csrf-token', function () {
-    //     return response()->json([
-    //         'csrf_token' => csrf_token(),
-    //     ]);
-    // });
 });
 Route::get('/subjects', [ArtistController::class, 'subjects']);
 Route::get('/placements', [ArtistController::class, 'placements']);

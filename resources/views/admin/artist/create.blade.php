@@ -181,7 +181,7 @@
                                     </div>
 
                                     <div class="col-md-2">
-                                        <label>Thrusday Time</label>
+                                        <label>Thursday Time</label>
                                     </div>
 
                                     <div class="col-md-2">
@@ -207,7 +207,7 @@
                                     </div>
 
                                     <div class="col-md-2">
-                                        <label>Saterday Time</label>
+                                        <label>Saturday Time</label>
                                     </div>
 
                                     <div class="col-md-2">

@@ -5,6 +5,6 @@ use App\Models\Style;
 
 class StyleRepository implements StyleInterface {
     public function getAllStyle(){
-        return Style::orderBy('id', 'DESC')->get();
+        return Style::orderBy('id', 'asc')->get();
     }
 }
