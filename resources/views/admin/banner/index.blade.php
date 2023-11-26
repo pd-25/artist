@@ -33,7 +33,7 @@
                                         <td>#</td>
                                         
                                         <td>
-                                            {{ $banner->artist->username }}
+                                            {{ @$banner->artist->username }}
                                             
                                         </td>
                                        

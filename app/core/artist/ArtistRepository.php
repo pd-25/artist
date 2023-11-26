@@ -89,6 +89,10 @@ class ArtistRepository implements ArtistInterface
             foreach($find->artworks as $art){
                 $art->delete();
             }
+
+            foreach($find->bannerImages as $bannerImage){
+                $bannerImage->delete();
+            }
             
             return $find->delete();
         }
