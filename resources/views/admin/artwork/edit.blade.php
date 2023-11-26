@@ -19,7 +19,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Artist Name</label><span class="text-info">(the artist can't be changed)</span>
+                                        <label>Artist Name</label><span class="text-info">(the artist can't be
+                                            changed)</span>
                                         {{-- <input type="text"  placeholder="full name" name="name"
                                             value="{{ old('name') }}"> --}}
                                         <span class="form-control">{{ $artwork->user->username }}</span>
@@ -75,9 +76,38 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Country</label><span class="text-danger">*</span>
+                                        <input type="text" name="country" class="form-control"
+                                            value="{{ $artwork->country }}" required>
+                                        @error('country')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ 'country field is required' }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label>Zipcode</label><span class="text-danger">*</span>
+                                        <input type="number" name="zipcode" class="form-control"
+                                            value="{{ $artwork->zipcode }}" required>
+                                        @error('zipcode')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ 'Zipcode field is required' }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Artwork title</label><span class="text-info">(This is auto generated, not changable)</span>
+                                <label>Artwork title</label><span class="text-info">(This is auto generated, not
+                                    changable)</span>
                                 <span class="form-control">{{ $artwork->title }}</span>
                                 @error('image')
                                     <span class="text-danger" role="alert">

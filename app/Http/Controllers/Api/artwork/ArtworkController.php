@@ -44,7 +44,7 @@ class ArtworkController extends Controller
             'subject_id' => 'required|numeric|exists:subjects,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-        $data = $request->only('user_id', 'style_id', 'placement_id', 'subject_id', 'image');
+        $data = $request->only('user_id', 'style_id', 'placement_id', 'subject_id', 'image','zipcode', 'country');
         $store = $this->artworkInterface->storeArtworkData($data);
         if ($store) {
             return response()->json([
@@ -62,7 +62,7 @@ class ArtworkController extends Controller
     public function artworkBanner(Request $request) {
         $request->validate([
             'user_id' => 'required|numeric|exists:users,id',
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif'
         ]);
         $data = $request->only('user_id', 'banner_image');
         $store = $this->bannerInterface->storeBannerImage($data);
@@ -78,4 +78,33 @@ class ArtworkController extends Controller
             ]);
         }
     }
+
+    public function artworkdelete($id){
+        if($this->artworkInterface->deleteArtwork($id)){
+            return response()->json([
+                'status' => true,
+                'data' => 'Artwork deleted successfully'
+            ], 200);
+        }else {
+            return response()->json([
+                'status' => false,
+                'data' => 'Some error occur'
+            ]);
+        }
+    }
+
+    public function bannerdelete($id){
+        if($this->bannerInterface->deleteBannerImage($id)){
+            return response()->json([
+                'status' => true,
+                'data' => 'Banner image deleted successfully'
+            ], 200);
+        }else {
+            return response()->json([
+                'status' => false,
+                'data' => 'Some error occur'
+            ]);
+        }
+    }
+    
 }

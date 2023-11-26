@@ -54,7 +54,7 @@ class ArtworkController extends Controller
             'subject_id' => 'required|numeric|exists:subjects,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-        $data = $request->only('user_id', 'style_id', 'placement_id', 'subject_id', 'image');
+        $data = $request->only('user_id', 'style_id', 'placement_id', 'subject_id', 'image', 'zipcode', 'country');
         $store = $this->artworkInterface->storeArtworkData($data);
         if ($store) {
             return redirect()->route('artworks.index')->with('msg', 'New artwork uploded successfully.');
@@ -98,7 +98,7 @@ class ArtworkController extends Controller
             'subject_id' => 'required|numeric|exists:subjects,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-        $data = $request->only('user_id', 'style_id', 'placement_id', 'subject_id', 'image');
+        $data = $request->only('user_id', 'style_id', 'placement_id', 'subject_id', 'image','zipcode', 'country');
         $update = $this->artworkInterface->updateArtwork($data, decrypt($id));
         if ($update) {
             return back()->with('msg', 'Artwork information updated successfully.');

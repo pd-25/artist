@@ -9,7 +9,7 @@ class Artwork extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','style_id','placement_id','subject_id','image','title'];
+    protected $fillable = ['user_id','style_id','placement_id','subject_id','image','title', 'zipcode', 'country'];
 
     public function user () {
         return  $this->belongsTo(User::class, 'user_id', 'id'); 

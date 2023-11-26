@@ -27,7 +27,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/artist', [ArtistController::class, 'artistInfo']);
     Route::post('/artist-update/{id}', [ArtistController::class, 'artistUpdate']);
     Route::post('/upload-artwork', [ArtworkController::class, 'artworkUpload']);
+    Route::delete('/delete-artwork/{id}', [ArtworkController::class, 'artworkdelete']);
     Route::post('/upload-banner', [ArtworkController::class, 'artworkBanner']);
+    Route::delete('/delete-banner/{id}', [ArtworkController::class, 'bannerdelete']);
+
 
 
 });

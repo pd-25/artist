@@ -29,7 +29,7 @@
 
                                         @error('user_id')
                                             <span class="text-danger" role="alert">
-                                                <strong>{{ "Artist name field is required" }}</strong>
+                                                <strong>{{ 'Artist name field is required' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -44,7 +44,7 @@
                                         </select>
                                         @error('style_id')
                                             <span class="text-danger" role="alert">
-                                                <strong>{{ "Style field is required" }}</strong>
+                                                <strong>{{ 'Style field is required' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -61,7 +61,7 @@
                                         </select>
                                         @error('placement_id')
                                             <span class="text-danger" role="alert">
-                                                <strong>{{ "Placement field is required" }}</strong>
+                                                <strong>{{ 'Placement field is required' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -76,7 +76,36 @@
                                         </select>
                                         @error('subject_id')
                                             <span class="text-danger" role="alert">
-                                                <strong>{{ "Subject field is required" }}</strong>
+                                                <strong>{{ 'Subject field is required' }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Country</label><span class="text-danger">*</span>
+                                        <input type="text" name="country" class="form-control"
+                                            value="{{ old('country') }}" required>
+                                        @error('country')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ 'country field is required' }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    
+                                </div>
+
+                                <div class="col-md-6">
+                                    
+                                    <div class="form-group">
+                                        <label>Zipcode</label><span class="text-danger">*</span>
+                                        <input type="number" name="zipcode" class="form-control"
+                                            value="{{ old('zipcode') }}" required>
+                                        @error('zipcode')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ 'Zipcode field is required' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
