@@ -89,7 +89,7 @@ class ArtistController extends Controller
 
     public function allArtist() {
         return response()->json([
-            'data' => $this->artist->allArtist()
+            'data' => $this->artist->getAllArtist()
         ]);
     }
 }
