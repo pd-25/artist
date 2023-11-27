@@ -39,3 +39,4 @@ Route::get('/placements', [ArtistController::class, 'placements']);
 Route::get('/styles', [ArtistController::class, 'styles']);
 
 Route::get('/all-artworks', [ArtworkController::class, 'allArtwork'])->name('allArtwork');
+Route::get('/all-artists', [ArtistController::class, 'allArtist'])->name('allArtist');
