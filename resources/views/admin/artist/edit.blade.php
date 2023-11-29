@@ -162,7 +162,7 @@
 
                             <div class="row">
                                 
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Sunday Time</label>
                                 </div>
 
@@ -174,10 +174,15 @@
                                     <input type="time" name="sunday_to" value="{{ date('H:i', strtotime(@$artist->timeData->sunday_to)) }}" class="form-control">
                                     
                                 </div>
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="sunday_close" id="check1">
+                                    <label class="form-check-label">Close</label>
+                                    
+                                </div>
 
 
 
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Monday Time</label>
                                 </div>
 
@@ -189,8 +194,13 @@
                                     <input type="time" name="monday_to" value="{{ date('H:i', strtotime(@$artist->timeData->monday_to)) }}" class="form-control">
                                     
                                 </div>
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="monday_close" id="check2">
+                                    <label class="form-check-label">Close</label>
+                                    
+                                </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Tuesday Time</label>
                                 </div>
 
@@ -202,8 +212,12 @@
                                     <input type="time" name="tuesday_to" value="{{ date('H:i', strtotime(@$artist->timeData->tuesday_to)) }}" class="form-control">
                                     
                                 </div>
-
-                                <div class="col-md-2">
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="tuesday_close" id="check3">
+                                    <label class="form-check-label">Close</label>
+                                    
+                                </div>
+                                <div class="col-md-1">
                                     <label>Wednesday Time</label>
                                 </div>
 
@@ -215,8 +229,13 @@
                                     <input type="time" name="wednesday_to" value="{{ date('H:i', strtotime(@$artist->timeData->wednesday_to)) }}" class="form-control">
                                     
                                 </div>
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="wednesday_close" id="check5">
+                                    <label class="form-check-label">Close</label>
+                                    
+                                </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Thrusday Time</label>
                                 </div>
 
@@ -228,8 +247,13 @@
                                     <input type="time" name="thrusday_to" value="{{ date('H:i', strtotime(@$artist->timeData->thrusday_to)) }}" class="form-control">
                                     
                                 </div>
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="thrusday_close" id="check6">
+                                    <label class="form-check-label">Close</label>
+                                    
+                                </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Friday Time</label>
                                 </div>
 
@@ -241,8 +265,13 @@
                                     <input type="time" name="friday_to" value="{{ date('H:i', strtotime(@$artist->timeData->friday_to)) }}" class="form-control">
                                     
                                 </div>
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="friday_close" id="check7">
+                                    <label class="form-check-label">Close</label>
+                                    
+                                </div>
 
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label>Saterday Time</label>
                                 </div>
 
@@ -252,6 +281,11 @@
 
                                 <div class="col-md-2">
                                     <input type="time" name="saterday_to" value="{{ date('H:i', strtotime(@$artist->timeData->saterday_to)) }}" class="form-control">
+                                    
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="saterday_close" id="check8">
+                                    <label class="form-check-label">Close</label>
                                     
                                 </div>
                             

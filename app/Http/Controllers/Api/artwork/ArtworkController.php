@@ -42,7 +42,7 @@ class ArtworkController extends Controller
             'style_id' => 'required|numeric|exists:styles,id',
             'placement_id' => 'required|numeric|exists:placements,id',
             'subject_id' => 'required|numeric|exists:subjects,id',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif'
         ]);
         $data = $request->only('user_id', 'style_id', 'placement_id', 'subject_id', 'image','zipcode', 'country');
         $store = $this->artworkInterface->storeArtworkData($data);

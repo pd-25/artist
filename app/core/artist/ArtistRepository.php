@@ -44,13 +44,43 @@ class ArtistRepository implements ArtistInterface
         }
     }
 
-    public function updateArtist($data, $id, $timeData)
+    public function updateArtist($data, $id, $timeData, $close)
     {
         $find =  User::where('id', $id)->first();
         if ($find) {
           
                  $check_if_time =  TimeTable::where('user_id', $id)->first();
                  if($check_if_time) {
+                    if(isset($close['tuesday_close'])){
+                        $timeData['tuesday_from'] =null;
+                        $timeData['tuesday_to'] =null;
+                    }
+
+                    if(isset($close['friday_close'])){
+                        $timeData['friday_from'] =null;
+                        $timeData['friday_to'] =null;
+                    }
+                    if(isset($close['saterday_close'])){
+                        $timeData['saterday_from'] =null;
+                        $timeData['saterday_to'] =null;
+                    }
+                    if(isset($close['sunday_close'])){
+                        $timeData['sunday_from'] =null;
+                        $timeData['sunday_to'] =null;
+                    }
+                    if(isset($close['monday_close'])){
+                        $timeData['monday_from'] =null;
+                        $timeData['monday_to'] =null;
+                    }
+                    if(isset($close['wednesday_close'])){
+                        $timeData['wednesday_from'] =null;
+                        $timeData['wednesday_to'] =null;
+                    }
+                    
+                    if(isset($close['thrusday_close'])){
+                        $timeData['thrusday_from'] =null;
+                        $timeData['thrusday_to'] =null;
+                    }
                     
                     $check_if_time->update($timeData);
                  }else{

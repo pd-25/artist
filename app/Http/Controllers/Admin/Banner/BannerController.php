@@ -40,7 +40,7 @@ class BannerController extends Controller
     {
         $request->validate([
             'user_id' => 'required|numeric|exists:users,id',
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif'
         ]);
         $data = $request->only('user_id', 'banner_image');
         $store = $this->bannerInterface->storeBannerImage($data);

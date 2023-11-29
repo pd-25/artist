@@ -94,8 +94,9 @@ class ArtistController extends Controller
 
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
+        $close = $request->only( 'sunday_close','monday_close', 'tuesday_close', 'wednesday_close', 'thrusday_close','friday_close', 'saterday_close');
 
-        $update = $this->artistInterface->updateArtist($data, decrypt($id), $timeData);
+        $update = $this->artistInterface->updateArtist($data, decrypt($id), $timeData, $close);
         if ($update) {
             return back()->with('msg', 'Artist information updated successfully.');
         } elseif ($update == 'No data') {
