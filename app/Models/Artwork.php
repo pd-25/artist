@@ -14,4 +14,16 @@ class Artwork extends Model
     public function user () {
         return  $this->belongsTo(User::class, 'user_id', 'id'); 
     }
+
+    public function views () {
+        return  $this->hasMany(TotalView::class, 'artwork_id', 'id'); 
+    }
+
+    public function likes () {
+        return  $this->hasMany(Like::class, 'artwork_id', 'id'); 
+    }
+
+    public function comments () {
+        return  $this->hasMany(Comment::class, 'artwork_id', 'id'); 
+    }
 }

@@ -31,6 +31,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/upload-banner', [ArtworkController::class, 'artworkBanner']);
     Route::delete('/delete-banner/{id}', [ArtworkController::class, 'bannerdelete']);
 
+    Route::post('/like', [ArtworkController::class, 'like']);
+    Route::get('/like-list/{id}', [ArtworkController::class, 'likeList']);
+
+    Route::post('/comment', [ArtworkController::class, 'comment']);
+    Route::get('/comment-list/{id}', [ArtworkController::class, 'commentList']);
+
+    Route::post('/view', [ArtworkController::class, 'view']);
+    // Route::get('/view-list/{id}', [ArtworkController::class, 'viewList']);
 
 
 });

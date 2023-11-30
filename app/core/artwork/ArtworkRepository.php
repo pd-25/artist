@@ -4,7 +4,11 @@ namespace App\core\artwork;
 
 use App\core\artwork\ArtworkInterface;
 use App\Models\Artwork;
+use App\Models\Comment;
+use App\Models\Like;
+use App\Models\TotalView;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,7 +16,7 @@ class ArtworkRepository implements ArtworkInterface
 {
     public function getAllArtwork()
     {
-        return Artwork::with('user')->orderBy('id', 'DESC')->get();
+        return Artwork::with('user', 'views', 'likes', 'comments')->orderBy('id', 'DESC')->get();
     }
 
     public function storeArtworkData(array $data)
@@ -66,5 +70,41 @@ class ArtworkRepository implements ArtworkInterface
             return $find->delete();
         }
         return 'not found';
+    }
+
+
+    public function likeUnlike($data){
+        $check = Like::where('user_id', $data['user_id'])->where('artwork_id', $data['artwork_id'])->first();
+        if($check){
+            $check->delete();
+            return 'unliked';
+        }else{
+            Like::create($data);
+            return 'liked';
+        }
+    }
+
+
+    public function artworkWiseLike($id){
+        return Like::where('artwork_id', $id)->get()->count();
+    }
+
+    public function commentPost($data){
+        return DB::table('comments')->insert($data);
+           
+    }
+
+    public function artworkWiseComment($id){
+        return Comment::where('artwork_id', $id)->get();
+    }
+
+    public function totalView($data){
+        $check = TotalView::where('user_id', $data['user_id'])->where('artwork_id', $data['artwork_id'])->first();
+        if($check){
+            return 'viewed';
+        }else{
+            TotalView::create($data);
+            return 'done';
+        }
     }
 }

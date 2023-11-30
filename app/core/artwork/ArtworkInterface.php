@@ -7,5 +7,17 @@ interface ArtworkInterface {
     public function getSingleArtwork($id);
     public function updateArtwork($data,$id);
     public function deleteArtwork($id);
+    public function likeUnlike($data);
+    public function artworkWiseLike($id);
+    public function commentPost($data);
+    public function artworkWiseComment($id);
+    public function totalView($data);
+
+    
+
+    
+
+    
+    
     
 }

@@ -106,5 +106,97 @@ class ArtworkController extends Controller
             ]);
         }
     }
+
+    public function like(Request $request) {
+        $request->validate([
+            'user_id' => 'required|numeric|exists:users,id',
+            'artwork_id' => 'required|numeric|exists:artworks,id'
+        ]);
+        $data = $request->only('user_id', 'artwork_id');  
+        $likeUnlike = $this->artworkInterface->likeUnlike($data);
+        if($likeUnlike == 'liked'){
+            return response()->json([
+                'status' => true,
+                'data' => 'Liked successfully'
+            ], 200);
+        }elseif($likeUnlike == 'unliked'){
+            return response()->json([
+                'status' => true,
+                'data' => 'Unliked successfully'
+            ], 200);  
+        }else{
+            return response()->json([
+                'status' => false,
+                'data' => 'Some error Occur'
+            ]);  
+        }
+
+    }
+
+    public function likeList($id){
+
+        $data = $this->artworkInterface->artworkWiseLike($id);
+        return response()->json([
+            'status' => true,
+            'data' => $data
+        ], 200); 
+    }
+
+    public function comment(Request $request) {
+        $request->validate([
+            'user_id' => 'required|numeric|exists:users,id',
+            'artwork_id' => 'required|numeric|exists:artworks,id',
+            'comment' => 'required|string|max:200'
+        ]);
+        $data = $request->only('user_id', 'artwork_id', 'comment');  
+        $commentPost = $this->artworkInterface->commentPost($data);
+        if($commentPost){
+            return response()->json([
+                'status' => true,
+                'data' => 'Commented successfully'
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => false,
+                'data' => 'Some error Occur'
+            ]);  
+        }
+
+    }
+
+    public function commentList($art_id){
+        $data = $this->artworkInterface->artworkWiseComment($art_id);
+        return response()->json([
+            'status' => true,
+            'data' => $data
+        ], 200); 
+    }
+
+    public function view(Request $request) {
+        $request->validate([
+            'user_id' => 'required|numeric|exists:users,id',
+            'artwork_id' => 'required|numeric|exists:artworks,id'
+        ]);
+        $data = $request->only('user_id', 'artwork_id');  
+        $likeUnlike = $this->artworkInterface->totalView($data);
+        if($likeUnlike == 'viewed'){
+            return response()->json([
+                'status' => true,
+                'data' => 'already viewed'
+            ], 200);
+        }elseif($likeUnlike == 'done'){
+            return response()->json([
+                'status' => true,
+                'data' => 'viewed successfully'
+            ], 200);  
+        }else{
+            return response()->json([
+                'status' => false,
+                'data' => 'Some error Occur'
+            ]);  
+        } 
+    }
+
+    
     
 }
