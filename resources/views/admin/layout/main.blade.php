@@ -60,6 +60,7 @@
                             <li><a href="{{ route('artworks.create') }}">Add Artwork</a></li>
 
                             <li><a href="{{ route('artworks.index') }}">All Artworks</a>
+                            <li><a href="#">All Comments</a>
                             </li>
 
 
