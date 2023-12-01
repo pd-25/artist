@@ -43,7 +43,7 @@ class ArtistController extends Controller
             'password' => 'required|string|min:8',
             'zipcode' => 'required|numeric|min:6',
             'phone' => 'numeric',
-            'address' => 'nullable|string|max:500',
+            'address' => 'nullable|string',
         ]);
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
         $timeData = $request->only('sunday_from','sunday_to','monday_from','monday_to','tuesday_from','tuesday_to','wednesday_from','wednesday_to','thrusday_from','thrusday_to','friday_from','friday_to','saterday_from','saterday_to');
@@ -89,7 +89,7 @@ class ArtistController extends Controller
             'name' => 'required|string',
             'zipcode' => 'required|numeric|min:6',
             'phone' => 'numeric',
-            'address' => 'nullable|string|max:500',
+            'address' => 'nullable|string',
         ]);
 
         $data = $request->only('name', 'username', 'email', 'phone', 'address', 'password', 'zipcode', 'profile_image', 'banner_image');
