@@ -36,7 +36,7 @@ class ArtistRepository implements ArtistInterface
 
     public function getSingleArtist($id)
     {
-        $find =  User::with('artworks', 'timeData', 'bannerImages')->where('id', $id)->first();
+        $find =  User::with('artworks', 'artworks.views', 'artworks.likes',  'artworks.comments', 'timeData', 'bannerImages')->where('id', $id)->first();
         if ($find) {
             return $find;
         } else {

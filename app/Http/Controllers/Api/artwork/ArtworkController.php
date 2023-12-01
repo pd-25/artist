@@ -115,14 +115,16 @@ class ArtworkController extends Controller
         $data = $request->only('user_id', 'artwork_id');  
         $likeUnlike = $this->artworkInterface->likeUnlike($data);
         if($likeUnlike == 'liked'){
+            $data = $this->artworkInterface->artworkWiseLike($data['artwork_id']);
             return response()->json([
                 'status' => true,
-                'data' => 'Liked successfully'
+                'data' => $data
             ], 200);
         }elseif($likeUnlike == 'unliked'){
+            $data = $this->artworkInterface->artworkWiseLike($data['artwork_id']);
             return response()->json([
                 'status' => true,
-                'data' => 'Unliked successfully'
+                'data' => $data
             ], 200);  
         }else{
             return response()->json([
@@ -181,14 +183,18 @@ class ArtworkController extends Controller
         $data = $request->only('user_id', 'artwork_id');  
         $likeUnlike = $this->artworkInterface->totalView($data);
         if($likeUnlike == 'viewed'){
+            $likeUnlike = $this->artworkInterface->totalViewCount($data['artwork_id']);
             return response()->json([
                 'status' => true,
-                'data' => 'already viewed'
+                'msg' => 'already viewed',
+                'data' => $likeUnlike
             ], 200);
         }elseif($likeUnlike == 'done'){
+            $likeUnlike = $this->artworkInterface->totalViewCount($data['artwork_id']);
             return response()->json([
                 'status' => true,
-                'data' => 'viewed successfully'
+                'msg' => 'viewed',
+                'data' => $likeUnlike
             ], 200);  
         }else{
             return response()->json([

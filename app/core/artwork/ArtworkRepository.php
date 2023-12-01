@@ -86,7 +86,7 @@ class ArtworkRepository implements ArtworkInterface
 
 
     public function artworkWiseLike($id){
-        return Like::where('artwork_id', $id)->get()->count();
+        return Like::with('user')->where('artwork_id', $id)->get()->count();
     }
 
     public function commentPost($data){
@@ -106,5 +106,9 @@ class ArtworkRepository implements ArtworkInterface
             TotalView::create($data);
             return 'done';
         }
+    }
+
+    public function totalViewCount($data){
+        return TotalView::where('artwork_id', $data)->get()->count();
     }
 }
