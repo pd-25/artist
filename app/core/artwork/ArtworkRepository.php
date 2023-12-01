@@ -95,7 +95,7 @@ class ArtworkRepository implements ArtworkInterface
     }
 
     public function artworkWiseComment($id){
-        return Comment::where('artwork_id', $id)->get();
+        return Comment::with('user')->where('artwork_id', $id)->get();
     }
 
     public function totalView($data){

@@ -151,9 +151,10 @@ class ArtworkController extends Controller
         $data = $request->only('user_id', 'artwork_id', 'comment');  
         $commentPost = $this->artworkInterface->commentPost($data);
         if($commentPost){
+            $data = $this->artworkInterface->artworkWiseComment($data['artwork_id']);
             return response()->json([
                 'status' => true,
-                'data' => 'Commented successfully'
+                'data' => $data
             ], 200);
         }else{
             return response()->json([
