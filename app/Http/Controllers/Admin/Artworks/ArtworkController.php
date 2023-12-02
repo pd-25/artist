@@ -8,6 +8,7 @@ use App\core\placement\PlacementInterface;
 use App\core\style\StyleInterface;
 use App\core\subject\SubjectInterface;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class ArtworkController extends Controller
@@ -121,6 +122,21 @@ class ArtworkController extends Controller
             }
         } catch (\Throwable $th) {
             return back()->with('msg', $th->getMessage());
+        }
+    }
+
+
+    public function allComment(){
+        $data['comments'] = Comment::with('user', 'artwork')->get();
+        return view('admin.comment', $data);
+    }
+
+    public function deleteComment($id){
+        $delete=Comment::where('id', decrypt($id))->delete();
+        if ($delete) {
+            return back()->with('msg', 'Comment has been deleted successfully.');
+        } elseif ($delete == 'No data') {
+            return back()->with('msg', 'No comment found.');
         }
     }
 }

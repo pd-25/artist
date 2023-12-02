@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/comment-list/{id}', [ArtworkController::class, 'commentList']);
 
     Route::post('/view', [ArtworkController::class, 'view']);
+    Route::delete('/delete-comment/{id}', [ArtworkController::class, 'deleteComment'])->name('comment.delete');
     // Route::get('/view-list/{id}', [ArtworkController::class, 'viewList']);
 
 
@@ -48,3 +49,4 @@ Route::get('/styles', [ArtistController::class, 'styles']);
 
 Route::get('/all-artworks', [ArtworkController::class, 'allArtwork'])->name('allArtwork');
 Route::get('/all-artists', [ArtistController::class, 'allArtist'])->name('allArtist');
+Route::get('/artist/{username}', [ArtistController::class, 'artistGet']);

@@ -29,6 +29,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::resource('artists', ArtistController::class);
 Route::resource('artworks', ArtworkController::class);
+Route::get('/all-comment', [ArtworkController::class, 'allComment'])->name('admin.allComment');
+Route::delete('/delete-comment/{id}', [ArtworkController::class, 'deleteComment'])->name('comment.delete');
+
 Route::resource('banners', BannerController::class);
 
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\artwork;
 use App\core\artwork\ArtworkInterface;
 use App\core\banner\BannerInterface;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class ArtworkController extends Controller
@@ -202,6 +203,23 @@ class ArtworkController extends Controller
                 'data' => 'Some error Occur'
             ]);  
         } 
+    }
+
+
+    public function deleteComment($id){
+        $delete=Comment::where('id', $id)->delete();
+        if($delete){
+            return response()->json([
+                'status' => true,
+                'msg' => 'Deleted success fully',
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => false,
+                'msg' => 'Not comment found',
+               
+            ]);
+        }
     }
 
     

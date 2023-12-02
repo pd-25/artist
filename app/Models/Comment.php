@@ -14,4 +14,8 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function artwork() {
+        return $this->belongsTo(Artwork::class, 'artwork_id', 'id');
+    }
+
 }

@@ -20,10 +20,10 @@
                                         <label>Artist Name</label><span class="text-danger">*</span>
                                         {{-- <input type="text"  placeholder="full name" name="name"
                                             value="{{ old('name') }}"> --}}
-                                        <select name="user_id" class="form-control" value="{{ old('user_id') }}">
+                                        <select name="user_id" id="user_id" class="form-control" value="{{ old('user_id') }}">
                                             <option value="">select artists</option>
                                             @foreach ($artists as $artist)
-                                                <option value="{{ $artist->id }}">{{ $artist->username }}</option>
+                                                <option data-zipcode="{{ $artist->zipcode }}" value="{{ $artist->id }}">{{ $artist->username }}</option>
                                             @endforeach
                                         </select>
 
@@ -86,7 +86,7 @@
                                     <div class="form-group">
                                         <label>Country</label><span class="text-danger">*</span>
                                         <input type="text" name="country" class="form-control"
-                                            value="{{ old('country') }}" required>
+                                            value="United States of America" required>
                                         @error('country')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ 'country field is required' }}</strong>
@@ -102,7 +102,7 @@
                                     <div class="form-group">
                                         <label>Zipcode</label><span class="text-danger">*</span>
                                         <input type="number" name="zipcode" class="form-control"
-                                            value="{{ old('zipcode') }}" required>
+                                            value="{{ old('zipcode') }}" id="zipcode" required>
                                         @error('zipcode')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ 'Zipcode field is required' }}</strong>
@@ -184,4 +184,11 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.getElementById('user_id').addEventListener('change', function() {
+                var selectedOption = this.options[this.selectedIndex];
+                var zipcode = selectedOption.getAttribute('data-zipcode');
+                document.getElementById('zipcode').value = zipcode;
+            });
+        </script>
     @endsection

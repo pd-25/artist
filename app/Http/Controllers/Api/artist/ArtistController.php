@@ -7,6 +7,7 @@ use App\core\placement\PlacementInterface;
 use App\core\style\StyleInterface;
 use App\core\subject\SubjectInterface;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ArtistController extends Controller
@@ -34,6 +35,24 @@ class ArtistController extends Controller
             'msg' => 'Artist data fetched successfully',
             'data' => $data
         ]);
+    }
+
+    public function artistGet($username){
+        $data =  User::with('artworks', 'artworks.views', 'artworks.likes',  'artworks.comments', 'timeData', 'bannerImages')->where('username', $username)->first();
+
+        if ($data) {
+            return response()->json([
+                'status' => true,
+                'msg' => 'Artist data fetched successfully',
+                'data' => $data
+            ]);
+            
+        }
+        return response()->json([
+            'status' => false,
+            'msg' => 'No user found'
+        ]);
+        
     }
 
     public function artistUpdate(Request $request, $id)
