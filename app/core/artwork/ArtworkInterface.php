@@ -13,6 +13,8 @@ interface ArtworkInterface {
     public function artworkWiseComment($id);
     public function totalView($data);
     public function totalViewCount($data);
+    public function getArtistWiseArtwork($id);
+    
     
 
     

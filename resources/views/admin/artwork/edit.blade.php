@@ -12,8 +12,13 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
+                        @if (Auth::guard('artists')->check())
+                        <form action="{{ route('artist.updateArtwork', encrypt($artwork->id)) }}" method="POST"
+                            enctype="multipart/form-data">
+                        @else
                         <form action="{{ route('artworks.update', encrypt($artwork->id)) }}" method="POST"
                             enctype="multipart/form-data">
+                            @endif
                             @csrf
                             @method('PUT')
                             <div class="row">

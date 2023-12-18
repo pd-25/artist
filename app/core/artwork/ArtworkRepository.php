@@ -111,4 +111,7 @@ class ArtworkRepository implements ArtworkInterface
     public function totalViewCount($data){
         return TotalView::where('artwork_id', $data)->get()->count();
     }
+    public function getArtistWiseArtwork($id){
+        return Artwork::where('user_id', $id)->get();
+    }
 }

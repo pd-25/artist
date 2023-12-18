@@ -39,29 +39,42 @@
                     <div class="logo"><a href="#">
                             <span>{{ env('APP_NAME') }}</span>
                         </a></div>
-                    {{-- <li><a href="#"><i class="ti-calendar"></i> Site Info </a></li> --}}
+
+                    @if (Auth::guard('artists')->check())
+                        <li><a href="{{ route('artists.profile') }}"><i class="ti-calendar"></i>Profile </a></li>
+                    @else
+                        <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Artist Management <span
+                                    class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="{{ route('artists.create') }}">Add Artist</a></li>
+
+                                <li><a href="{{ route('artists.index') }}">All Artists</a>
+                                </li>
 
 
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Artist Management <span
-                                class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{{ route('artists.create') }}">Add Artist</a></li>
-
-                            <li><a href="{{ route('artists.index') }}">All Artists</a>
-                            </li>
+                            </ul>
+                        </li>
+                    @endif
 
 
-                        </ul>
-                    </li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Artwork Management <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="{{ route('artworks.create') }}">Add Artwork</a></li>
 
-                            <li><a href="{{ route('artworks.index') }}">All Artworks</a>
-                            <li><a href="{{ route('admin.allComment') }}">All Comments</a>
-                            </li>
+                            @if (Auth::guard('artists')->check())
+                                <li><a href="{{ route('artists.getForm') }}">Add Artwork</a></li>
+
+                                <li><a href="{{ route('artists.getArtistWiseArtwork') }}">My Artworks</a>
+                                <li><a href="{{ route('admin.allComment') }}">All Comments</a>
+                                </li>
+                            @else
+                                <li><a href="{{ route('artworks.create') }}">Add Artwork</a></li>
+
+                                <li><a href="{{ route('artworks.index') }}">All Artworks</a>
+                                <li><a href="{{ route('admin.allComment') }}">All Comments</a>
+                                </li>
+                            @endif
+
 
 
                         </ul>
@@ -119,7 +132,7 @@
                             <div class="header-icon dropdown">
 
                                 <span class="user-avatar" data-toggle="dropdown"
-                                    aria-expanded="false">{{ auth()->user()->full_name }}
+                                    aria-expanded="false">{{ Auth::guard('artists')->check() ? Auth::guard('artists')->user()->name : auth()->user()->full_name }}
                                     <i class="ti-angle-down f-s-10"></i>
                                 </span>
                                 <div class="dropdown-menu dropdown-content-body">
