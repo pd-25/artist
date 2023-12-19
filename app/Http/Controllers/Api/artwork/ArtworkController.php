@@ -6,6 +6,7 @@ use App\core\artwork\ArtworkInterface;
 use App\core\banner\BannerInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Quote;
 use Illuminate\Http\Request;
 
 class ArtworkController extends Controller
@@ -217,6 +218,30 @@ class ArtworkController extends Controller
             return response()->json([
                 'status' => false,
                 'msg' => 'Not comment found',
+               
+            ]);
+        }
+    }
+
+    public function quoteSave(Request $request){
+        $request->validate([
+            'color' => 'required|string',
+            'size' => 'required|string',
+            'description' => 'required|string',
+            // 'color' => 'required|string',
+        ]);
+        $data = $request->only('color', 'size', 'description');
+        $data['artist_id'] = auth()->guard('artists')->id();
+        $delete=Quote::create($data);
+        if($delete){
+            return response()->json([
+                'status' => true,
+                'msg' => 'Quote created successfully',
+            ], 200);
+        }else{
+            return response()->json([
+                'status' => false,
+                'msg' => 'Error occur',
                
             ]);
         }

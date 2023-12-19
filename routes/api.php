@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::post('/view', [ArtworkController::class, 'view']);
     Route::delete('/delete-comment/{id}', [ArtworkController::class, 'deleteComment'])->name('comment.delete');
-    // Route::get('/view-list/{id}', [ArtworkController::class, 'viewList']);
+    Route::post('/quote', [ArtworkController::class, 'quoteSave']);
 
 
 });
