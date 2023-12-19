@@ -56,7 +56,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'artistCheck'], function () {
     Route::delete('/artwork-delete/{id}', [ArtistArtworkController::class, 'destroyArtwork'])->name('artist.destroyArtwork');
 
     Route::get('/banner-get', [ArtistBannerController::class, 'getArtistWiseBanner'])->name('artists.getArtistWiseBanner');
-    Route::get('/banner-upload', [ArtistBannerController::class, 'getForm'])->name('artists.getForm');
+    Route::get('/banner-upload', [ArtistBannerController::class, 'getForm'])->name('artists.bgetForm');
     Route::post('/banner-upload', [ArtistBannerController::class, 'uploadArtistWiseBanner'])->name('artists.uploadArtistWiseBanner');
     Route::delete('/banner-delete/{id}', [ArtistBannerController::class, 'destroyBanner'])->name('artists.destroyBanner');
     

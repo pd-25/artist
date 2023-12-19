@@ -84,7 +84,7 @@
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             @if (Auth::guard('artists')->check())
-                                <li><a href="{{ route('artists.getForm') }}">Add Banner</a></li>
+                                <li><a href="{{ route('artists.bgetForm') }}">Add Banner</a></li>
 
                                 <li><a href="{{ route('artists.getArtistWiseBanner') }}">My Banners</a>
                                 </li>
