@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\artist\ArtworkController as ArtistArtworkController;
 use App\Http\Controllers\artist\AuthController;
+use App\Http\Controllers\artist\BannerController as ArtistBannerController;
 use App\Http\Controllers\artist\DashboardController as ArtistDashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,11 @@ Route::group(['prefix' => 'user', 'middleware' => 'artistCheck'], function () {
     Route::get('/artwork-edit/{id}', [ArtistArtworkController::class, 'editArtwork'])->name('artist.editArtwork');
     Route::put('/artwork-edit/{id}', [ArtistArtworkController::class, 'updateArtwork'])->name('artist.updateArtwork');
     Route::delete('/artwork-delete/{id}', [ArtistArtworkController::class, 'destroyArtwork'])->name('artist.destroyArtwork');
+
+    Route::get('/banner-get', [ArtistBannerController::class, 'getArtistWiseBanner'])->name('artists.getArtistWiseBanner');
+    Route::get('/banner-upload', [ArtistBannerController::class, 'getForm'])->name('artists.getForm');
+    Route::post('/banner-upload', [ArtistBannerController::class, 'uploadArtistWiseBanner'])->name('artists.uploadArtistWiseBanner');
+    Route::delete('/banner-delete/{id}', [ArtistBannerController::class, 'destroyBanner'])->name('artists.destroyBanner');
     
 
 });

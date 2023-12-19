@@ -83,10 +83,20 @@
                     <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Banner Management <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="{{ route('banners.create') }}">Add Banner</a></li>
+                            @if (Auth::guard('artists')->check())
+                                <li><a href="{{ route('artists.getForm') }}">Add Banner</a></li>
 
-                            <li><a href="{{ route('banners.index') }}">All Banners</a>
-                            </li>
+                                <li><a href="{{ route('artists.getArtistWiseBanner') }}">My Banners</a>
+                                </li>
+                            @else
+                                <li><a href="{{ route('banners.create') }}">Add Banner</a></li>
+
+                                <li><a href="{{ route('banners.index') }}">All Banners</a>
+                                </li>
+                            @endif
+
+
+
 
 
                         </ul>

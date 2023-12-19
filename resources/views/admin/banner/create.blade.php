@@ -12,41 +12,52 @@
                 </div>
                 <div class="card-body">
                     <div class="basic-form">
-                        <form action="{{ route('banners.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                        @if (Auth::guard('artists')->check())
+                            <form action="{{ route('artists.uploadArtistWiseBanner') }}" method="POST" enctype="multipart/form-data">
+                            @else
+                                <form action="{{ route('banners.store') }}" method="POST" enctype="multipart/form-data">
+                        @endif
+                        @csrf
 
-                            <div class="form-group">
-                                <label>Artist Name</label><span class="text-danger">*</span>
-                                {{-- <input type="text"  placeholder="full name" name="name"
-                                            value="{{ old('name') }}"> --}}
+                        <div class="form-group">
+                            <label>Artist Name</label><span class="text-danger">*</span>
+                            @if (Auth::guard('artists')->check())
+                                <select name="user_id" class="form-control" value="{{ old('user_id') }}">
+                                    <option selected value="{{ auth()->guard('artists')->id() }}">
+                                        {{ auth()->guard('artists')->user()->name }}</option>
+                                </select>
+                            @else
                                 <select name="user_id" class="form-control" value="{{ old('user_id') }}">
                                     <option value="">select artists</option>
                                     @foreach ($artists as $artist)
                                         <option value="{{ $artist->id }}">{{ $artist->username }}</option>
                                     @endforeach
                                 </select>
-
-                                @error('user_id')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ 'Artist name field is required' }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @endif
 
 
-                            <div class="form-group">
-                                <label>Attach the banner image here</label><span class="text-danger">*</span>
-                                <input type="file" class="form-control" name="banner_image" value="{{ old('banner_image') }}">
-                                @error('image')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @error('user_id')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{ 'Artist name field is required' }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Attach the banner image here</label><span class="text-danger">*</span>
+                            <input type="file" class="form-control" name="banner_image"
+                                value="{{ old('banner_image') }}">
+                            @error('image')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
 
 
-                            <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-default">Submit</button>
                         </form>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', env('APP_NAME').' | BannerImage-index'  )
+@section('title', env('APP_NAME') . ' | BannerImage-index')
 @section('content')
     <div class="row justify-content-center">
 
@@ -12,7 +12,12 @@
                     @endif
                 </div>
                 <div class="card-title text-right">
+                    @if (Auth::guard('artists')->check())
+                    <a href="{{ route('artists.getForm') }}" class="btn btn-sm btn-success">Add Banner</a>
+                    @else
                     <a href="{{ route('banners.create') }}" class="btn btn-sm btn-success">Add Banner</a>
+                    @endif
+                   
 
                 </div>
                 <div class="card-body">
@@ -28,41 +33,54 @@
                             </thead>
                             <tbody>
                                 @foreach ($banners as $banner)
-                             
                                     <tr>
                                         <td>#</td>
-                                        
+
                                         <td>
                                             {{ @$banner->artist->username }}
-                                            
+
                                         </td>
-                                       
+
                                         <td>
                                             @if (!empty($banner->banner_image) && File::exists(public_path('storage/BannerImage/' . $banner->banner_image)))
-                                            <img style="height: 82px; width: 82px;" src="{{ asset('storage/BannerImage/'.$banner->banner_image) }}" alt="">
-                                                
+                                                <img style="height: 82px; width: 82px;"
+                                                    src="{{ asset('storage/BannerImage/' . $banner->banner_image) }}"
+                                                    alt="">
                                             @else
-                                            <img style="height: 82px; width: 82px;" src="{{asset('noimg.png') }}" alt="">
-                                                
+                                                <img style="height: 82px; width: 82px;" src="{{ asset('noimg.png') }}"
+                                                    alt="">
                                             @endif
-                                            
-                                            
+
+
                                         </td>
-                                        
-                                       
+
+
                                         <td>
-                                          
-                                            <form method="POST"
-                                                action="{{ route('banners.destroy', encrypt($banner->id)) }}"
-                                                class="action-icon">
-                                                @csrf
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <button type="submit"
-                                                    class="btn btn-sm btn-danger  delete-icon show_confirm"
-                                                    data-toggle="tooltip" title='Delete'>
-                                                    <i class="ti-trash"></i>
-                                                </button>
-                                            </form>
+                                            @if (Auth::guard('artists')->check())
+                                                <form method="POST"
+                                                    action="{{ route('artists.destroyBanner', encrypt($banner->id)) }}"
+                                                    class="action-icon">
+                                                    @csrf
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger  delete-icon show_confirm"
+                                                        data-toggle="tooltip" title='Delete'>
+                                                        <i class="ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form method="POST"
+                                                    action="{{ route('banners.destroy', encrypt($banner->id)) }}"
+                                                    class="action-icon">
+                                                    @csrf
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger  delete-icon show_confirm"
+                                                        data-toggle="tooltip" title='Delete'>
+                                                        <i class="ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                         </td>
 
                                     </tr>
@@ -90,9 +108,9 @@
                 dataType: "JSON",
                 success: function(response) {
                     if (response.status) {
-                        $("#status-btn"+ id).load(window.location.href + " #status-btn"+ id);
+                        $("#status-btn" + id).load(window.location.href + " #status-btn" + id);
                         swal('Status updated');
-                    }else {
+                    } else {
                         swal('Some Error occur, relode the page');
                     }
                 }

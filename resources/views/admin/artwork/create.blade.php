@@ -117,8 +117,14 @@
 
                                 <div class="form-group">
                                     <label>Zipcode</label><span class="text-danger">*</span>
-                                    <input type="number" name="zipcode" class="form-control" value="{{ old('zipcode') }}"
+                                      @if (Auth::guard('artists')->check())
+                                         <input type="number" name="zipcode" class="form-control" value="{{ auth()->guard('artists')->user()->zipcode }}"
+                                            id="zipcode" required>
+                                      @else
+                                        <input type="number" name="zipcode" class="form-control" value="{{ old('zipcode') }}"
                                         id="zipcode" required>
+                                      @endif
+                                  
                                     @error('zipcode')
                                         <span class="text-danger" role="alert">
                                             <strong>{{ 'Zipcode field is required' }}</strong>

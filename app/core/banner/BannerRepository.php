@@ -5,6 +5,9 @@ use App\Models\BannerImage;
 
 class BannerRepository implements BannerInterface {
     public function getAllBanners(){
+        if(auth()->guard('artists')->check()){
+            return BannerImage::where('user_id', auth()->guard('artists')->id())->with('artist')->orderBy('id', 'DESC')->get();
+        }
         return BannerImage::with('artist')->orderBy('id', 'DESC')->get();
     }
 
