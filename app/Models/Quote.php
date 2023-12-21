@@ -9,5 +9,13 @@ class Quote extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['artist_id','color','description','size'];
+    protected $fillable = ['user_id','artist_id','color','description','size'];
+
+    public function normalUser(){
+        return $this->belongsTo(User::class, 'user_id','id');
+    }
+
+    public function artist(){
+        return $this->belongsTo(User::class, 'artist_id','id');
+    }
 }

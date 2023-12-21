@@ -32,6 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
      
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/get-quote', [DashboardController::class, 'getQuote'])->name('admin.getQuote');
 Route::resource('artists', ArtistController::class);
 Route::resource('artworks', ArtworkController::class);
 
@@ -39,7 +40,10 @@ Route::delete('/delete-comment/{id}', [ArtworkController::class, 'deleteComment'
 
 Route::resource('banners', BannerController::class);
 
+
 });
+Route::delete('/delete-quote/{id}', [DashboardController::class, 'deleteQuote'])->name('quote.delete');
+
 Route::get('/all-comment', [ArtworkController::class, 'allComment'])->name('admin.allComment');
 
 Route::post('userlogin', [AuthController::class, 'userlogin'])->name('userlogin');

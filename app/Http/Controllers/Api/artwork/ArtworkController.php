@@ -228,10 +228,10 @@ class ArtworkController extends Controller
             'color' => 'required|string',
             'size' => 'required|string',
             'description' => 'required|string',
-            // 'color' => 'required|string',
+            'artist_id' => 'required'
         ]);
-        $data = $request->only('color', 'size', 'description');
-        $data['artist_id'] = auth()->guard('artists')->id();
+        $data = $request->only('color', 'size', 'description', 'artist_id');
+        $data['user_id'] = auth()->id();
         $delete=Quote::create($data);
         if($delete){
             return response()->json([
