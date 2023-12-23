@@ -43,7 +43,7 @@
                     @if (Auth::guard('artists')->check())
                         <li><a href="{{ route('artists.profile') }}"><i class="ti-calendar"></i>Profile </a></li>
                     @else
-                    <li><a href="{{ route('admin.getQuote') }}"><i class="ti-calendar"></i>Quote </a></li>
+                    
                         <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Artist Management <span
                                     class="sidebar-collapse-icon ti-angle-down"></span></a>
                             <ul>
@@ -102,6 +102,7 @@
 
                         </ul>
                     </li>
+                    <li><a href="{{ route('admin.getQuote') }}"><i class="ti-calendar"></i>Quote </a></li>
 
                     {{-- <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Order Management <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
