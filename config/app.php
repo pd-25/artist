@@ -175,7 +175,7 @@ return [
         App\ServiceProvider\SubjectServiceProvider::class,
         App\ServiceProvider\StyleServiceProvider::class,
         App\ServiceProvider\BannerImageServiceProvider::class,
-        
+        Barryvdh\DomPDF\ServiceProvider::class,//Add this code
     ])->toArray(),
 
     /*
@@ -191,6 +191,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,//Add this code
     ])->toArray(),
 
 ];

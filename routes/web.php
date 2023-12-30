@@ -29,7 +29,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-     
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::resource('artists', ArtistController::class);
@@ -42,6 +42,10 @@ Route::resource('banners', BannerController::class);
 
 });
 Route::get('/get-quote', [DashboardController::class, 'getQuote'])->name('admin.getQuote');
+Route::post('/send-link', [DashboardController::class, 'SendLink'])->name('admin.SendLink');
+Route::get('/form-link-url/{user_id}/{artist_id}', [DashboardController::class, 'formlinkurl'])->name('admin.formlinkurl');
+Route::post('/userformsubmit', [DashboardController::class, 'userformsubmit'])->name('admin.userformsubmit');
+
 
 Route::delete('/delete-quote/{id}', [DashboardController::class, 'deleteQuote'])->name('quote.delete');
 
@@ -64,6 +68,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'artistCheck'], function () {
     Route::get('/banner-upload', [ArtistBannerController::class, 'getForm'])->name('artists.bgetForm');
     Route::post('/banner-upload', [ArtistBannerController::class, 'uploadArtistWiseBanner'])->name('artists.uploadArtistWiseBanner');
     Route::delete('/banner-delete/{id}', [ArtistBannerController::class, 'destroyBanner'])->name('artists.destroyBanner');
-    
+
 
 });
