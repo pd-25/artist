@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Tattoform;
+use Illuminate\Support\Facades\Log;
 use PDF;
 use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
@@ -41,11 +42,15 @@ class DashboardController extends Controller
         // GET User Details
         $user = User::where('id', $request->userid)->first();
         $toemail =$user->email;
-        Mail::send('admin.email.sendlink', ["useremail"=>$user->email,"user_id"=>$user->id,"artist_id"=>$request->artistid], function($message) use ($toemail){
-            $message->to($toemail);
-            //$message->bcc('test@salesanta.com');
-            $message->subject('TATTOO INFORMED CONSENT & MEDICAL HISTORY');
-        });
+       try {
+            Mail::send('admin.email.sendlink', ["useremail"=>$user->email,"user_id"=>$user->id,"artist_id"=>$request->artistid], function($message) use ($toemail){
+                $message->to($toemail);
+                //$message->bcc('test@salesanta.com');
+                $message->subject('TATTOO INFORMED CONSENT & MEDICAL HISTORY');
+            });
+       } catch (\Throwable $th) {
+            Log::debug($th->getMessage());
+       }
 
         Quote::where('id', $request->dbid)
         ->update([
