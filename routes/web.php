@@ -8,6 +8,8 @@ use App\Http\Controllers\artist\ArtworkController as ArtistArtworkController;
 use App\Http\Controllers\artist\AuthController;
 use App\Http\Controllers\artist\BannerController as ArtistBannerController;
 use App\Http\Controllers\artist\DashboardController as ArtistDashboardController;
+use App\Http\Controllers\Admin\Payment\PaymentController;
+use App\Http\Controllers\Admin\Expenses\ExpensesController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +47,22 @@ Route::get('/get-quote', [DashboardController::class, 'getQuote'])->name('admin.
 Route::post('/send-link', [DashboardController::class, 'SendLink'])->name('admin.SendLink');
 Route::get('/form-link-url/{user_id}/{artist_id}', [DashboardController::class, 'formlinkurl'])->name('admin.formlinkurl');
 Route::post('/userformsubmit', [DashboardController::class, 'userformsubmit'])->name('admin.userformsubmit');
+
+Route::get('/get-accept-payment', [PaymentController::class, 'getAcceptPayment'])->name('admin.getAcceptPayment');
+Route::get('/add-payment', [PaymentController::class, 'AddpaymentForm'])->name('admin.AddpaymentForm');
+Route::post('/add-payment-post', [PaymentController::class, 'AddpaymentPost'])->name('admin.AddpaymentPost');
+Route::get('/edit-payment/{id}', [PaymentController::class, 'editpaymentForm'])->name('admin.editpaymentForm');
+Route::post('/edit-payment-post/{id}', [PaymentController::class, 'editpaymentPost'])->name('admin.editpaymentPost');
+Route::delete('/payment-delete/{id}', [PaymentController::class, 'deletepaymentForm'])->name('admin.deletepaymentForm');
+
+Route::get('/get-expenses', [ExpensesController::class, 'getExpenses'])->name('admin.getExpenses');
+Route::get('/add-expenses', [ExpensesController::class, 'AddexpensesForm'])->name('admin.AddexpensesForm');
+Route::post('/add-expenses-post', [ExpensesController::class, 'AddexpensesPost'])->name('admin.AddexpensesPost');
+Route::get('/edit-expenses/{id}', [ExpensesController::class, 'editexpensesForm'])->name('admin.editexpensesForm');
+Route::post('/edit-expenses-post/{id}', [ExpensesController::class, 'editexpensesPost'])->name('admin.editexpensesPost');
+Route::delete('/expenses-delete/{id}', [ExpensesController::class, 'deleteexpensesForm'])->name('admin.deleteexpensesForm');
+
+
 
 
 Route::delete('/delete-quote/{id}', [DashboardController::class, 'deleteQuote'])->name('quote.delete');

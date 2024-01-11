@@ -51,7 +51,7 @@
                                       <!-- <h5 style='color: #6D717A;font-size: 20px;line-height: 23px;'>If you've lost your password or wish to reset it, use the link below to get started.</h5> -->
                                       <h4>
                                         <a href="{{ url('form-link-url/'.$user_id.'/'.$artist_id); }}" style='color: #FFF;text-align: center;background: #EE5719;padding: 15px 50px;border-radius: 50px;margin: 10px auto;text-decoration: none;display: inline-block;'>
-                                        View PDF
+                                            Submit Your Tattoo from
                                         </a>
                                       </h4>
                                       <!-- <p>If you did not request a password reset, you can safely ignore this email. Only a person with access to your email can reset your account password.</p> -->

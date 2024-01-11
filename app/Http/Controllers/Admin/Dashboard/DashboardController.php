@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Tattoform;
 use Illuminate\Support\Facades\Log;
+use App\Models\PaymentModel;
 use PDF;
 use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
@@ -154,7 +155,7 @@ class DashboardController extends Controller
         });
 
 
-        return redirect()->back()->with('message', 'Tatto added successfully.');
+        return redirect()->back()->with('message', 'Payment data added successfully.');
     }
 
 
@@ -168,4 +169,7 @@ class DashboardController extends Controller
         return back()->with('msg', 'No Quote found');
 
     }
+
+
+
 }
