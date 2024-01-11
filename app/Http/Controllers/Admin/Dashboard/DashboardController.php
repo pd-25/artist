@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Tattoform;
+use App\Models\PaymentModel;
 use PDF;
 use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
@@ -42,7 +43,8 @@ class DashboardController extends Controller
         $user = User::where('id', $request->userid)->first();
         $toemail =$user->email;
         Mail::send('admin.email.sendlink', ["useremail"=>$user->email,"user_id"=>$user->id,"artist_id"=>$request->artistid], function($message) use ($toemail){
-            $message->to($toemail);
+            //$message->to($toemail);
+            $message->to('biswajitmaityniit@gmail.com');
             //$message->bcc('test@salesanta.com');
             $message->subject('TATTOO INFORMED CONSENT & MEDICAL HISTORY');
         });
@@ -149,7 +151,7 @@ class DashboardController extends Controller
         });
 
 
-        return redirect()->back()->with('message', 'Tatto added successfully.');
+        return redirect()->back()->with('message', 'Payment data added successfully.');
     }
 
 
@@ -163,4 +165,7 @@ class DashboardController extends Controller
         return back()->with('msg', 'No Quote found');
 
     }
+
+
+
 }
