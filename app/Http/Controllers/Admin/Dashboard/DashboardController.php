@@ -46,7 +46,7 @@ class DashboardController extends Controller
        try {
             Mail::send('admin.email.sendlink', ["useremail"=>$user->email,"user_id"=>$user->id,"artist_id"=>$request->artistid], function($message) use ($toemail){
                 $message->to($toemail);
-                //$message->bcc('test@salesanta.com');
+                //$message->bcc('');
                 $message->subject('TATTOO INFORMED CONSENT & MEDICAL HISTORY');
             });
        } catch (\Throwable $th) {
